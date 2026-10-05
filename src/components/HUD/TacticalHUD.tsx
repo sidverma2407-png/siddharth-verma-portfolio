@@ -37,6 +37,18 @@ const TacticalHUD: React.FC<TacticalHUDProps> = ({ audioEnabled, setAudioEnabled
         </div>
 
         <div className="flex flex-col items-end gap-1">
+          <div className="pointer-events-auto mb-2 relative group flex flex-col items-end">
+            <button 
+              onClick={onRecruiterMode}
+              className="border border-green-500/50 bg-green-500/10 text-green-500 px-3 py-1.5 md:px-4 md:py-2 text-[10px] md:text-xs tracking-widest hover:bg-green-500 hover:text-black transition-colors"
+            >
+              [ RECRUITER MODE ]
+            </button>
+            <div className="absolute top-full right-0 mt-1 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <span className="text-[8px] md:text-[9px] text-gray-500 tracking-widest">SKIP INTERACTIVE MODE</span>
+            </div>
+          </div>
+
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             <p className="text-sm tracking-wider">STATUS: ONLINE</p>
@@ -57,10 +69,10 @@ const TacticalHUD: React.FC<TacticalHUDProps> = ({ audioEnabled, setAudioEnabled
       </div>
 
       {/* Bottom Bar */}
-      <div className="flex justify-between items-end">
+      <div className="flex justify-between items-end w-full">
         <div className="flex flex-col gap-2">
           <p className="text-xs text-gray-500 tracking-[0.2em]">SYSTEM:</p>
-          <p className="text-sm tracking-widest">AI / SOFTWARE / DISTRIBUTED SYSTEMS</p>
+          <p className="text-[10px] md:text-sm tracking-widest">AI / SOFTWARE / DISTRIBUTED SYSTEMS</p>
           <div className="flex gap-4 mt-2 pointer-events-auto">
             <button 
               onClick={() => setAudioEnabled(!audioEnabled)}
@@ -70,15 +82,6 @@ const TacticalHUD: React.FC<TacticalHUDProps> = ({ audioEnabled, setAudioEnabled
               AUDIO: {audioEnabled ? 'ON' : 'OFF'}
             </button>
           </div>
-        </div>
-
-        <div className="pointer-events-auto">
-          <button 
-            onClick={onRecruiterMode}
-            className="border border-white/30 bg-black/50 backdrop-blur px-4 py-2 text-xs tracking-widest hover:bg-white hover:text-black transition-colors"
-          >
-            [ RECRUITER MODE ]
-          </button>
         </div>
       </div>
     </div>

@@ -1,150 +1,262 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { profileData, skillsData, missionsData, experienceData, intelData } from '../../data/profile';
 
 interface RecruiterModeProps {
   onExit: () => void;
 }
 
+const NAV_ITEMS = [
+  { id: 'about', label: 'ABOUT' },
+  { id: 'experience', label: 'EXPERIENCE' },
+  { id: 'projects', label: 'PROJECTS' },
+  { id: 'skills', label: 'SKILLS' },
+  { id: 'education', label: 'EDUCATION' },
+  { id: 'leadership', label: 'LEADERSHIP' },
+  { id: 'certifications', label: 'CERTIFICATIONS' },
+  { id: 'contact', label: 'CONTACT' },
+];
+
 const RecruiterMode: React.FC<RecruiterModeProps> = ({ onExit }) => {
+  const [phase, setPhase] = useState<'entering' | 'ready' | 'exiting'>('entering');
+
+  useEffect(() => {
+    if (phase === 'entering') {
+      const t = setTimeout(() => {
+        setPhase('ready');
+      }, 1500);
+      return () => clearTimeout(t);
+    }
+  }, [phase]);
+
+  const handleExit = () => {
+    setPhase('exiting');
+    setTimeout(() => {
+      onExit();
+    }, 1200);
+  };
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-black text-gray-300 font-sans p-6 md:p-12 selection:bg-white selection:text-black">
-      <div className="max-w-4xl mx-auto space-y-16">
-        
-        {/* Navigation */}
-        <nav className="flex justify-between items-center border-b border-gray-800 pb-4 sticky top-0 bg-black/90 backdrop-blur z-50">
-          <div className="font-bold text-white tracking-widest">{profileData.name.toUpperCase()}</div>
-          <button 
-            onClick={onExit}
-            className="text-xs font-mono border border-gray-700 px-3 py-1 hover:bg-white hover:text-black transition-colors"
+    <div className="relative min-h-screen bg-[#0a0a0a] text-gray-300 font-mono overflow-x-hidden selection:bg-green-500/30 selection:text-green-500 scroll-smooth">
+      <AnimatePresence mode="wait">
+        {phase === 'entering' && (
+          <motion.div
+            key="entering"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 flex flex-col items-center justify-center z-50 bg-black"
           >
-            [ EXIT RECRUITER MODE ]
-          </button>
-        </nav>
+            <div className="flex flex-col gap-2">
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="text-xs text-gray-500 tracking-widest">&gt;&gt; SWITCHING INTERFACE</motion.p>
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="text-xs text-white tracking-widest">&gt;&gt; RECRUITER MODE</motion.p>
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0 }} className="text-xs text-green-500 tracking-widest blink">&gt;&gt; READY</motion.p>
+            </div>
+          </motion.div>
+        )}
 
-        {/* Profile */}
-        <section className="space-y-4 pt-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-white">{profileData.name}</h1>
-          <p className="text-xl text-gray-400">{profileData.role}</p>
-          <p className="max-w-2xl text-gray-300 leading-relaxed">
-            {profileData.intro}
-          </p>
-          <div className="flex gap-4 pt-4 font-mono text-sm">
-            <a href={profileData.contact.github} className="text-blue-400 hover:underline">GitHub</a>
-            <a href={profileData.contact.linkedin} className="text-blue-400 hover:underline">LinkedIn</a>
-            <a href={`mailto:${profileData.contact.email}`} className="text-blue-400 hover:underline">Email</a>
-            <a href="#" className="border border-white text-white px-3 py-1 hover:bg-white hover:text-black transition-colors ml-4">
-              Download Resume
-            </a>
+        {phase === 'exiting' && (
+          <motion.div
+            key="exiting"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="absolute inset-0 flex flex-col items-center justify-center z-50 bg-black"
+          >
+            <p className="text-xs text-green-500 tracking-widest blink">&gt;&gt; RESTORING TACTICAL INTERFACE...</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className={`transition-opacity duration-1000 ${phase === 'ready' ? 'opacity-100' : 'opacity-0'} relative z-10 max-w-5xl mx-auto flex flex-col lg:flex-row gap-12 p-6 md:p-12 lg:py-24`}>
+        
+        {/* Sticky Sidebar Navigation */}
+        <aside className="lg:w-64 flex-shrink-0 relative">
+          <div className="sticky top-0 lg:top-24 bg-[#0a0a0a]/90 backdrop-blur z-40 py-4 lg:py-0 flex flex-col gap-4 lg:gap-8 border-b border-white/10 lg:border-none mb-8 lg:mb-0">
+            <div>
+              <h1 className="text-xl md:text-2xl font-bold text-white tracking-widest mb-1">SIDDHARTH VERMA</h1>
+              <p className="text-[10px] md:text-xs text-gray-400 tracking-[0.2em] mb-2 lg:mb-4 uppercase">Computer Science & Engineering</p>
+              <p className="text-[8px] md:text-[10px] text-green-500 tracking-[0.3em] uppercase">AI / Software / Distributed Systems</p>
+            </div>
+
+            <nav className="flex overflow-x-auto lg:flex-col gap-4 lg:gap-3 pb-2 lg:pb-0 scrollbar-hide">
+              {NAV_ITEMS.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollTo(item.id)}
+                  className="whitespace-nowrap text-left text-[10px] md:text-xs tracking-widest text-gray-500 hover:text-white transition-colors"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+
+            <button 
+              onClick={handleExit}
+              className="hidden lg:block mt-8 border border-green-500/50 text-green-500 bg-green-500/10 px-4 py-2 text-xs tracking-widest hover:bg-green-500 hover:text-black transition-colors w-max"
+            >
+              [ OPERATOR MODE ]
+            </button>
           </div>
-        </section>
+        </aside>
 
-        {/* Skills */}
-        <section className="space-y-6">
-          <h2 className="text-2xl font-bold text-white border-b border-gray-800 pb-2">Skills & Technologies</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-sm font-bold text-gray-400 mb-2 uppercase">Languages</h3>
-              <p>{skillsData.languages.join(", ")}</p>
-            </div>
-            <div>
-              <h3 className="text-sm font-bold text-gray-400 mb-2 uppercase">AI / ML</h3>
-              <p>{skillsData.ai_ml.join(", ")}</p>
-            </div>
-            <div>
-              <h3 className="text-sm font-bold text-gray-400 mb-2 uppercase">Backend</h3>
-              <p>{skillsData.backend.join(", ")}</p>
-            </div>
-            <div>
-              <h3 className="text-sm font-bold text-gray-400 mb-2 uppercase">Databases</h3>
-              <p>{skillsData.databases.join(", ")}</p>
-            </div>
-          </div>
-        </section>
+        {/* Mobile Operator Mode Button (sticky bottom) */}
+        <button 
+          onClick={handleExit}
+          className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 border border-green-500/50 text-green-500 bg-black/90 backdrop-blur px-6 py-3 text-[10px] tracking-widest hover:bg-green-500 hover:text-black transition-colors shadow-[0_0_20px_rgba(0,0,0,0.8)] z-50 whitespace-nowrap"
+        >
+          [ RESTORE OPERATOR MODE ]
+        </button>
 
-        {/* Experience */}
-        <section className="space-y-6">
-          <h2 className="text-2xl font-bold text-white border-b border-gray-800 pb-2">Experience</h2>
-          {experienceData.map((exp, i) => (
-            <div key={i} className="space-y-2">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-lg font-bold text-white">{exp.role}</h3>
-                  <p className="text-gray-400">{exp.company}</p>
-                </div>
-                <span className="text-sm text-gray-500 font-mono">{exp.duration}</span>
-              </div>
-              <ul className="list-disc list-inside space-y-1 text-gray-300 ml-2">
-                {exp.achievements.map((ach, j) => (
-                  <li key={j}>{ach}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </section>
-
-        {/* Projects */}
-        <section className="space-y-6">
-          <h2 className="text-2xl font-bold text-white border-b border-gray-800 pb-2">Projects</h2>
-          <div className="space-y-8">
-            {missionsData.map((project, i) => (
-              <div key={i} className="space-y-2 border-l-2 border-gray-800 pl-4">
-                <h3 className="text-xl font-bold text-white">{project.title} <span className="text-sm text-gray-500 font-normal"> - {project.subtitle}</span></h3>
-                <p className="text-gray-300">{project.description}</p>
-                <div className="text-sm font-mono text-gray-400 mt-2">
-                  <span className="text-gray-500">Tech: </span>{project.tech.join(", ")}
-                </div>
-                <div className="flex gap-3 pt-2 font-mono text-sm">
-                  <a href={project.links.project} className="text-blue-400 hover:underline">View Project</a>
-                  <a href={project.links.github} className="text-blue-400 hover:underline">GitHub</a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Education & Leadership */}
-        <section className="space-y-6">
-          <h2 className="text-2xl font-bold text-white border-b border-gray-800 pb-2">Education & Leadership</h2>
+        {/* Main Content Area */}
+        <main className="flex-1 flex flex-col gap-24">
           
-          <div className="space-y-4">
-            {intelData.education.map((edu, i) => (
-              <div key={`edu-${i}`} className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-lg font-bold text-white">{edu.institution}</h3>
-                  <p className="text-gray-400">{edu.degree}</p>
+          <section id="about" className="scroll-mt-24 space-y-8">
+            <div className="flex flex-wrap gap-4 text-xs font-bold tracking-widest">
+              <a href="#" className="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors">[ DOWNLOAD RESUME ]</a>
+              <a href={profileData.contact.github} target="_blank" rel="noreferrer" className="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors">[ GITHUB ]</a>
+              <a href={profileData.contact.linkedin} target="_blank" rel="noreferrer" className="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors">[ LINKEDIN ]</a>
+              <button onClick={() => scrollTo('contact')} className="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors">[ CONTACT ]</button>
+            </div>
+            
+            <p className="text-sm md:text-base leading-relaxed text-gray-400 max-w-2xl border-l-2 border-white/20 pl-4 py-1">
+              Computer Science & Engineering student at Vellore Institute of Technology focused on AI/ML, backend engineering and distributed systems.
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 border border-white/10 p-4 md:p-6 bg-white/5">
+              <div>
+                <p className="text-[10px] text-gray-500 tracking-widest mb-1">CGPA</p>
+                <p className="text-xl md:text-2xl font-bold text-white">{profileData.cgpa}</p>
+              </div>
+              <div>
+                <p className="text-[10px] text-gray-500 tracking-widest mb-1">EXPERIENCE</p>
+                <p className="text-xs md:text-sm font-bold text-white mt-2">AI/ML & Software Intern</p>
+              </div>
+              <div>
+                <p className="text-[10px] text-gray-500 tracking-widest mb-1">PROJECTS</p>
+                <p className="text-xl md:text-2xl font-bold text-white">0{missionsData.length}</p>
+              </div>
+              <div>
+                <p className="text-[10px] text-gray-500 tracking-widest mb-1">LEADERSHIP</p>
+                <p className="text-xl md:text-2xl font-bold text-white">0{intelData.leadership.length}</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="experience" className="scroll-mt-24 space-y-8">
+            <h2 className="text-sm tracking-widest text-white border-b border-white/20 pb-2">EXPERIENCE</h2>
+            {experienceData.map((exp, i) => (
+              <div key={i} className="space-y-4">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
+                  <div>
+                    <h3 className="text-lg font-bold text-white tracking-wider">{exp.company}</h3>
+                    <p className="text-xs text-green-500 tracking-widest mt-1">{exp.role}</p>
+                  </div>
+                  <p className="text-[10px] text-gray-500 tracking-widest">{exp.duration.toUpperCase()}</p>
                 </div>
-                <div className="text-right">
-                  <span className="text-sm text-gray-500 font-mono block">{edu.duration}</span>
-                  <span className="text-sm text-gray-300 font-mono">{edu.score}</span>
+                <ul className="list-none space-y-4 text-xs md:text-sm text-gray-400 pl-4 border-l border-white/10 mt-4">
+                  <li><strong className="text-white">38% → 100%</strong> Keyword Coverage</li>
+                  <li><strong className="text-white">70%</strong> Reduction in manual research turnaround</li>
+                  <li><strong className="text-white">5-agent</strong> LangGraph workflow</li>
+                  <li><strong className="text-white">15</strong> Evaluation parameters</li>
+                </ul>
+              </div>
+            ))}
+          </section>
+
+          <section id="projects" className="scroll-mt-24 space-y-12">
+            <h2 className="text-sm tracking-widest text-white border-b border-white/20 pb-2">PROJECTS</h2>
+            {missionsData.map((mission, i) => (
+              <div key={i} className="space-y-4">
+                <h3 className="text-lg font-bold text-white tracking-wider">{mission.title}</h3>
+                <p className="text-[10px] text-gray-500 tracking-widest">{mission.subtitle}</p>
+                <p className="text-xs text-gray-400">{mission.tech.join(' • ')}</p>
+                <div className="flex gap-4 pt-2 text-[10px] tracking-widest">
+                  <a href={mission.links.project || '#'} target="_blank" rel="noreferrer" className="text-blue-400 hover:text-white transition-colors">[ VIEW PROJECT ]</a>
+                  <a href={mission.links.github || '#'} target="_blank" rel="noreferrer" className="text-blue-400 hover:text-white transition-colors">[ GITHUB ]</a>
                 </div>
               </div>
             ))}
-          </div>
+          </section>
 
-          <div className="pt-4 space-y-4">
-            <h3 className="text-lg font-bold text-gray-400">Leadership</h3>
-            {intelData.leadership.map((ldr, i) => (
-              <div key={`ldr-${i}`} className="flex justify-between items-start">
-                <div>
-                  <h4 className="font-bold text-white">{ldr.organization}</h4>
-                  <p className="text-gray-400 text-sm">{ldr.role}</p>
-                </div>
-                <span className="text-sm text-gray-500 font-mono">{ldr.duration}</span>
+          <section id="skills" className="scroll-mt-24 space-y-8">
+            <h2 className="text-sm tracking-widest text-white border-b border-white/20 pb-2">SKILLS</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div>
+                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4">LANGUAGES</h3>
+                <p className="text-xs text-gray-300 leading-loose">{skillsData.languages.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
               </div>
-            ))}
-          </div>
-        </section>
+              <div>
+                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4">AI / ML</h3>
+                <p className="text-xs text-gray-300 leading-loose">{skillsData.ai_ml.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
+              </div>
+              <div>
+                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4">BACKEND / DISTRIBUTED</h3>
+                <p className="text-xs text-gray-300 leading-loose">{skillsData.backend.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
+              </div>
+              <div>
+                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4">DATABASES / CACHING</h3>
+                <p className="text-xs text-gray-300 leading-loose">{skillsData.databases.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
+              </div>
+              <div>
+                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4">CLOUD / DEVOPS</h3>
+                <p className="text-xs text-gray-300 leading-loose">{skillsData.cloud_devops.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
+              </div>
+            </div>
+          </section>
 
-        {/* Certifications */}
-        <section className="space-y-4 pb-20">
-          <h2 className="text-2xl font-bold text-white border-b border-gray-800 pb-2">Certifications</h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-300 ml-2">
-            {intelData.certifications.map((cert, i) => (
-              <li key={i}>{cert}</li>
-            ))}
-          </ul>
-        </section>
+          <section id="education" className="scroll-mt-24 space-y-8">
+            <h2 className="text-sm tracking-widest text-white border-b border-white/20 pb-2">EDUCATION</h2>
+            <div className="space-y-8">
+              {intelData.education.map((edu, i) => (
+                <div key={i} className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
+                  <div>
+                    <h3 className="text-base font-bold text-gray-300 tracking-wider">{edu.institution}</h3>
+                    <p className="text-xs text-gray-400 mt-1">{edu.degree}</p>
+                    <p className="text-xs text-white font-bold mt-2">{edu.score}</p>
+                  </div>
+                  <p className="text-[10px] text-gray-500 tracking-widest">{edu.duration}</p>
+                </div>
+              ))}
+            </div>
+          </section>
 
+          <section id="leadership" className="scroll-mt-24 space-y-8">
+            <h2 className="text-sm tracking-widest text-white border-b border-white/20 pb-2">LEADERSHIP</h2>
+            <div className="space-y-6">
+              {intelData.leadership.map((ldr, i) => (
+                <div key={i}>
+                  <h3 className="text-base font-bold text-white tracking-wider">{ldr.organization.toUpperCase()}</h3>
+                  <p className="text-xs text-gray-400 mt-1">{ldr.role}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="certifications" className="scroll-mt-24 space-y-8">
+            <h2 className="text-sm tracking-widest text-white border-b border-white/20 pb-2">CERTIFICATIONS</h2>
+            <ul className="list-none space-y-3 text-xs text-gray-300">
+              {intelData.certifications.map((cert, i) => (
+                <li key={i}>{cert}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section id="contact" className="scroll-mt-24 space-y-8 pb-32">
+            <h2 className="text-sm tracking-widest text-white border-b border-white/20 pb-2">CONTACT</h2>
+            <p className="text-xs text-gray-400">Open to Software Engineering, AI/ML, Backend, and Systems opportunities.</p>
+            <div className="flex gap-4 font-bold tracking-widest text-[10px]">
+              <a href={`mailto:${profileData.contact.email}`} className="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors">[ EMAIL ]</a>
+            </div>
+          </section>
+
+        </main>
       </div>
     </div>
   );
