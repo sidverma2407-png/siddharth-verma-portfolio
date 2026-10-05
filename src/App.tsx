@@ -44,15 +44,23 @@ function App() {
     return <BootSequence status={bootStatus} onDeploy={handleDeploy} onRecruiterMode={() => setRecruiterMode(true)} />;
   }
 
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   return (
     <div className="relative w-full max-w-[100vw] h-screen bg-black overflow-hidden noselect cursor-none text-white font-mono">
       <Environment />
       
-      {/* Container that shakes */}
+      {/* Container that handles entry animation and shakes */}
       <motion.div 
         className="w-full h-full absolute inset-0"
-        animate={{ x: shake, y: shake }}
-        transition={{ type: "spring", stiffness: 3000, damping: 10 }}
+        initial={{ opacity: 0, scale: isReducedMotion ? 1 : 1.02 }}
+        animate={{ opacity: 1, scale: 1, x: shake, y: shake }}
+        transition={{ 
+          opacity: { duration: 0.8 }, 
+          scale: { duration: 0.8, ease: "easeOut" },
+          x: { type: "spring", stiffness: 3000, damping: 10 },
+          y: { type: "spring", stiffness: 3000, damping: 10 }
+        }}
       >
         {/* HUD Layer */}
         <TacticalHUD 
