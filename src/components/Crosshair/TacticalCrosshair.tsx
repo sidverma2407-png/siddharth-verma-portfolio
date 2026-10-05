@@ -90,8 +90,8 @@ const TacticalCrosshair: React.FC = () => {
         )}
       </motion.div>
 
-      {/* Readout Status (position safely below and right) */}
-      <div className="absolute top-8 left-8 w-max">
+      {/* Readout Status (position safely top-right to prevent overlap with descriptions below target) */}
+      <div className="absolute bottom-10 left-10 w-max">
         <p className={`text-[9px] tracking-widest font-mono font-bold ${isHit || isAcquired ? 'text-red-500' : 'text-gray-400'}`}>
           {readout}
         </p>

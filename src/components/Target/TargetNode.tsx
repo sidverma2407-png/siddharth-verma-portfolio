@@ -227,6 +227,19 @@ const TargetNode: React.FC<TargetNodeProps> = ({ id: _id, label, x, y, lines, on
         </motion.div>
       )}
 
+      {/* Tracer Effect (Fired state) */}
+      <AnimatePresence>
+        {targetState === 'FIRED' && (
+          <motion.div 
+            initial={{ opacity: 1, scale: 5, y: 100 }}
+            animate={{ opacity: 0, scale: 0, y: 0 }}
+            transition={{ duration: 0.1 }}
+            exit={{ opacity: 0 }}
+            className="absolute top-1/2 left-1/2 w-1 h-20 bg-yellow-400 blur-[1px] -translate-x-1/2 -translate-y-full origin-bottom pointer-events-none z-50"
+          />
+        )}
+      </AnimatePresence>
+
       {/* Hit Particles */}
       <div className="absolute top-[40px] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-50">
         {particles.map(p => (
