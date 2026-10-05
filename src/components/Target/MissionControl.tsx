@@ -134,7 +134,7 @@ const MissionControl: React.FC<MissionControlProps> = ({ activePanel, setActiveP
               {activePanel === 'missions' && <MissionPanel setActivePanel={setActivePanel} />}
               {activePanel === 'experience' && <ExperiencePanel setActivePanel={setActivePanel} />}
               {activePanel === 'intel' && <IntelPanel setActivePanel={setActivePanel} />}
-              {activePanel === 'comms' && <CommsPanel />}
+              {activePanel === 'comms' && <CommsPanel setActivePanel={setActivePanel} />}
             </div>
           </motion.div>
         )}
