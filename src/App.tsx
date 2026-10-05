@@ -13,12 +13,23 @@ function App() {
   const [recruiterMode, setRecruiterMode] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(false);
   const [activePanel, setActivePanel] = useState<string | null>(null);
+  const [shake, setShake] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setBootStatus('ready');
     }, 3000);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleShake = () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      setShake(Math.random() > 0.5 ? 4 : -4);
+      setTimeout(() => setShake(0), 50);
+    };
+    window.addEventListener('screen_shake', handleShake);
+    return () => window.removeEventListener('screen_shake', handleShake);
   }, []);
 
   const handleDeploy = () => {
@@ -32,18 +43,6 @@ function App() {
   if (bootStatus === 'booting' || bootStatus === 'ready') {
     return <BootSequence status={bootStatus} onDeploy={handleDeploy} onRecruiterMode={() => setRecruiterMode(true)} />;
   }
-
-  const [shake, setShake] = useState(0);
-
-  useEffect(() => {
-    const handleShake = () => {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      setShake(Math.random() > 0.5 ? 4 : -4);
-      setTimeout(() => setShake(0), 50);
-    };
-    window.addEventListener('screen_shake', handleShake);
-    return () => window.removeEventListener('screen_shake', handleShake);
-  }, []);
 
   return (
     <div className="relative w-full max-w-[100vw] h-screen bg-black overflow-hidden noselect cursor-none text-white font-mono">
