@@ -4,10 +4,19 @@ interface AudioControllerProps {
   enabled: boolean;
 }
 
-const AudioController: React.FC<AudioControllerProps> = ({ enabled: _enabled }) => {
-  // Normally we would have HTMLAudioElements here mapped to sounds.
-  // Since we don't have audio assets, this component acts as a placeholder
-  // where a real implementation would load and play audio elements based on app state.
+const AudioController: React.FC<AudioControllerProps> = ({ enabled }) => {
+  React.useEffect(() => {
+    const handlePlayAudio = (e: Event) => {
+      if (!enabled) return;
+      const customEvent = e as CustomEvent;
+      // In a real app, play specific audio file for customEvent.detail
+      console.log(`[AUDIO] Playing sound: ${customEvent.detail}`);
+    };
+
+    window.addEventListener('play_audio', handlePlayAudio);
+    return () => window.removeEventListener('play_audio', handlePlayAudio);
+  }, [enabled]);
+
   return null;
 };
 

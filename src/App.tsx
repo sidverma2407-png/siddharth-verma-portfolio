@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import BootSequence from './components/BootSequence';
 import TacticalHUD from './components/HUD/TacticalHUD';
 import RecruiterMode from './components/RecruiterMode/RecruiterMode';
@@ -32,25 +33,44 @@ function App() {
     return <BootSequence status={bootStatus} onDeploy={handleDeploy} onRecruiterMode={() => setRecruiterMode(true)} />;
   }
 
+  const [shake, setShake] = useState(0);
+
+  useEffect(() => {
+    const handleShake = () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      setShake(Math.random() > 0.5 ? 4 : -4);
+      setTimeout(() => setShake(0), 50);
+    };
+    window.addEventListener('screen_shake', handleShake);
+    return () => window.removeEventListener('screen_shake', handleShake);
+  }, []);
+
   return (
-    <div className="relative w-full h-screen bg-black overflow-hidden noselect cursor-none text-white font-mono">
+    <div className="relative w-full max-w-[100vw] h-screen bg-black overflow-hidden noselect cursor-none text-white font-mono">
       <Environment />
       
-      {/* HUD Layer */}
-      <TacticalHUD 
-        audioEnabled={audioEnabled} 
-        setAudioEnabled={setAudioEnabled} 
-        onRecruiterMode={() => setRecruiterMode(true)}
-      />
+      {/* Container that shakes */}
+      <motion.div 
+        className="w-full h-full absolute inset-0"
+        animate={{ x: shake, y: shake }}
+        transition={{ type: "spring", stiffness: 3000, damping: 10 }}
+      >
+        {/* HUD Layer */}
+        <TacticalHUD 
+          audioEnabled={audioEnabled} 
+          setAudioEnabled={setAudioEnabled} 
+          onRecruiterMode={() => setRecruiterMode(true)}
+        />
 
-      {/* Interactive Environment Layer */}
-      <MissionControl 
-        activePanel={activePanel} 
-        setActivePanel={setActivePanel} 
-        audioEnabled={audioEnabled}
-      />
+        {/* Interactive Environment Layer */}
+        <MissionControl 
+          activePanel={activePanel} 
+          setActivePanel={setActivePanel} 
+          audioEnabled={audioEnabled}
+        />
+      </motion.div>
 
-      {/* Crosshair stays on top */}
+      {/* Crosshair stays on top and does not shake with screen */}
       <TacticalCrosshair />
 
       {/* Audio System */}

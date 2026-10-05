@@ -16,12 +16,12 @@ interface MissionControlProps {
 }
 
 const targets = [
-  { id: 'profile', label: 'TARGET 01 // PROFILE', x: '20%', y: '25%', lines: ['WHO I AM', 'CSE @ VIT • AI / SOFTWARE / SYSTEMS', 'BUILDING PRODUCTS, NOT JUST PROJECTS'] },
-  { id: 'arsenal', label: 'TARGET 02 // ARSENAL', x: '80%', y: '25%', lines: ['TECH STACK', 'PYTHON • C++ • JAVA • TYPESCRIPT', 'AI/ML • BACKEND • DISTRIBUTED SYSTEMS'] },
-  { id: 'missions', label: 'TARGET 03 // MISSIONS', x: '25%', y: '55%', lines: ['WHAT I BUILD', 'HELM • PHARMASSIST • SHOWRUSH', 'AI + BACKEND + REAL-WORLD SYSTEMS'] },
-  { id: 'experience', label: 'TARGET 04 // EXPERIENCE', x: '75%', y: '55%', lines: ['FIELD EXPERIENCE', 'AI/ML & SOFTWARE INTERN', '5-AGENT AI WORKFLOW • 70% FASTER RESEARCH'] },
-  { id: 'intel', label: 'TARGET 05 // INTEL', x: '35%', y: '85%', lines: ['EDUCATION + ACHIEVEMENTS', 'VIT • CGPA 8.28', 'LEADERSHIP • CERTIFICATIONS • PROJECTS'] },
-  { id: 'comms', label: 'TARGET 06 // COMMS', x: '65%', y: '85%', lines: ["LET'S BUILD", 'GITHUB • LINKEDIN • EMAIL', 'OPEN TO OPPORTUNITIES & COLLABORATION'] },
+  { id: 'profile', label: 'TARGET 01 // PROFILE', x: 'clamp(160px, 20%, calc(100% - 160px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['WHO I AM', 'CSE @ VIT • AI / SOFTWARE / SYSTEMS', 'BUILDING PRODUCTS, NOT JUST PROJECTS'] },
+  { id: 'arsenal', label: 'TARGET 02 // ARSENAL', x: 'clamp(160px, 80%, calc(100% - 160px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['TECH STACK', 'PYTHON • C++ • JAVA • TYPESCRIPT', 'AI/ML • BACKEND • DISTRIBUTED SYSTEMS'] },
+  { id: 'missions', label: 'TARGET 03 // MISSIONS', x: 'clamp(160px, 25%, calc(100% - 160px))', y: 'clamp(120px, 55%, calc(100% - 160px))', lines: ['WHAT I BUILD', 'HELM • PHARMASSIST • SHOWRUSH', 'AI + BACKEND + REAL-WORLD SYSTEMS'] },
+  { id: 'experience', label: 'TARGET 04 // EXPERIENCE', x: 'clamp(160px, 75%, calc(100% - 160px))', y: 'clamp(120px, 55%, calc(100% - 160px))', lines: ['FIELD EXPERIENCE', 'AI/ML & SOFTWARE INTERN', '5-AGENT AI WORKFLOW • 70% FASTER RESEARCH'] },
+  { id: 'intel', label: 'TARGET 05 // INTEL', x: 'clamp(160px, 35%, calc(100% - 160px))', y: 'clamp(120px, 85%, calc(100% - 160px))', lines: ['EDUCATION + ACHIEVEMENTS', 'VIT • CGPA 8.28', 'LEADERSHIP • CERTIFICATIONS • PROJECTS'] },
+  { id: 'comms', label: 'TARGET 06 // COMMS', x: 'clamp(160px, 65%, calc(100% - 160px))', y: 'clamp(120px, 85%, calc(100% - 160px))', lines: ["LET'S BUILD", 'GITHUB • LINKEDIN • EMAIL', 'OPEN TO OPPORTUNITIES & COLLABORATION'] },
 ];
 
 const MissionControl: React.FC<MissionControlProps> = ({ activePanel, setActivePanel, audioEnabled }) => {
