@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import TargetNode from './TargetNode';
 import MissionPanel from '../Panels/MissionPanel';
@@ -16,12 +16,12 @@ interface MissionControlProps {
 }
 
 const targets = [
-  { id: 'profile', label: 'TARGET 01 // PROFILE', x: 'clamp(250px, 20%, calc(100% - 250px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['WHO I AM', 'CSE @ VIT â€¢ AI / SOFTWARE / SYSTEMS', 'BUILDING PRODUCTS, NOT JUST PROJECTS'] },
-  { id: 'arsenal', label: 'TARGET 02 // ARSENAL', x: 'clamp(250px, 80%, calc(100% - 250px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['TECH STACK', 'PYTHON â€¢ C++ â€¢ JAVA â€¢ TYPESCRIPT', 'AI/ML â€¢ BACKEND â€¢ DISTRIBUTED SYSTEMS'] },
-  { id: 'missions', label: 'TARGET 03 // MISSIONS', x: 'clamp(250px, 25%, calc(100% - 250px))', y: 'clamp(120px, 55%, calc(100% - 250px))', lines: ['WHAT I BUILD', 'HELM â€¢ PHARMASSIST â€¢ SHOWRUSH', 'AI + BACKEND + REAL-WORLD SYSTEMS'] },
-  { id: 'experience', label: 'TARGET 04 // EXPERIENCE', x: 'clamp(250px, 75%, calc(100% - 250px))', y: 'clamp(120px, 55%, calc(100% - 250px))', lines: ['FIELD EXPERIENCE', 'AI/ML & SOFTWARE INTERN', '5-AGENT AI WORKFLOW â€¢ 70% FASTER RESEARCH'] },
-  { id: 'intel', label: 'TARGET 05 // INTEL', x: 'clamp(250px, 35%, calc(100% - 250px))', y: 'clamp(120px, 85%, calc(100% - 250px))', lines: ['EDUCATION + ACHIEVEMENTS', 'VIT â€¢ CGPA 8.28', 'LEADERSHIP â€¢ CERTIFICATIONS â€¢ PROJECTS'] },
-  { id: 'comms', label: 'TARGET 06 // COMMS', x: 'clamp(250px, 65%, calc(100% - 250px))', y: 'clamp(120px, 85%, calc(100% - 250px))', lines: ["LET'S BUILD", 'GITHUB â€¢ LINKEDIN â€¢ EMAIL', 'OPEN TO OPPORTUNITIES & COLLABORATION'] },
+  { id: 'profile', label: 'TARGET 01 // PROFILE', x: 'clamp(250px, 20%, calc(100% - 250px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['WHO I AM', 'CSE @ VIT • AI / SOFTWARE / SYSTEMS', 'BUILDING PRODUCTS, NOT JUST PROJECTS'] },
+  { id: 'arsenal', label: 'TARGET 02 // ARSENAL', x: 'clamp(250px, 80%, calc(100% - 250px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['TECH STACK'] },
+  { id: 'missions', label: 'TARGET 03 // MISSIONS', x: 'clamp(250px, 25%, calc(100% - 250px))', y: 'clamp(120px, 55%, calc(100% - 250px))', lines: ['WHAT I BUILD'] },
+  { id: 'experience', label: 'TARGET 04 // EXPERIENCE', x: 'clamp(250px, 75%, calc(100% - 250px))', y: 'clamp(120px, 55%, calc(100% - 250px))', lines: ['FIELD EXPERIENCE'] },
+  { id: 'intel', label: 'TARGET 05 // INTEL', x: 'clamp(250px, 35%, calc(100% - 250px))', y: 'clamp(120px, 85%, calc(100% - 250px))', lines: ['EDUCATION + ACHIEVEMENTS'] },
+  { id: 'comms', label: 'TARGET 06 // COMMS', x: 'clamp(250px, 65%, calc(100% - 250px))', y: 'clamp(120px, 85%, calc(100% - 250px))', lines: ["LET'S BUILD"] },
 ];
 
 const MissionControl: React.FC<MissionControlProps> = ({ activePanel, setActivePanel, audioEnabled }) => {
