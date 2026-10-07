@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface TargetNodeProps {
@@ -226,7 +226,7 @@ const TargetNode: React.FC<TargetNodeProps> = ({ id: _id, label, x, y, lines, on
           {targetState !== 'UNLOCKING' && (
             <div className="flex flex-col mt-1 bg-[#03050a]/80 px-2 md:px-4 py-2 border border-white/5 backdrop-blur-md shadow-lg w-max max-w-[85vw] md:max-w-[320px]">
               {lines.map((line, idx) => (
-                <p key={idx} className={`${idx === 0 ? 'text-[9px] font-mono tracking-widest text-blue-400 mb-1 uppercase font-bold' : 'text-xs font-sans tracking-wide text-gray-400 leading-relaxed'} text-center whitespace-normal md:whitespace-nowrap`}>
+                <p key={idx} className={`${idx === 0 ? 'text-[9px] font-mono tracking-widest text-blue-400 mb-1 uppercase font-bold' : 'text-xs font-sans tracking-wide text-gray-400 leading-relaxed'} text-center whitespace-normal`}>
                   {line}
                 </p>
               ))}

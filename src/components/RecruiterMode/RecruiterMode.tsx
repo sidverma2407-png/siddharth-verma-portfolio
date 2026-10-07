@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Environment from '../Environment/Environment';
 import { profileData, skillsData, missionsData, experienceData, intelData } from '../../data/profile';
 
 interface RecruiterModeProps {
@@ -44,7 +45,7 @@ const RecruiterMode: React.FC<RecruiterModeProps> = ({ onExit }) => {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0a0a0a] text-gray-300 font-mono overflow-x-hidden selection:bg-green-500/30 selection:text-green-500 scroll-smooth">
+    <div className="relative min-h-screen bg-transparent text-gray-300 font-mono overflow-x-hidden selection:bg-green-500/30 selection:text-green-500 scroll-smooth">`n      <div className="fixed inset-0 z-[-2] pointer-events-none"><Environment /></div>`n      <div className="fixed inset-0 z-[-1] pointer-events-none bg-[#03050A]/90 backdrop-blur-sm"></div>
       <AnimatePresence mode="wait">
         {phase === 'entering' && (
           <motion.div
@@ -161,7 +162,7 @@ const RecruiterMode: React.FC<RecruiterModeProps> = ({ onExit }) => {
                   <p className="text-[10px] text-gray-500 tracking-widest">{exp.duration.toUpperCase()}</p>
                 </div>
                 <ul className="list-none space-y-4 text-xs md:text-sm text-gray-400 pl-4 border-l border-white/10 mt-4 font-sans leading-relaxed">
-                  <li><strong className="text-white font-mono">38% â†’ 100%</strong> Keyword Coverage</li>
+                  <li><strong className="text-white font-mono">38% Ã¢â€ â€™ 100%</strong> Keyword Coverage</li>
                   <li><strong className="text-white font-mono">70%</strong> Reduction in manual research turnaround</li>
                   <li><strong className="text-white font-mono">5-agent</strong> LangGraph workflow</li>
                   <li><strong className="text-white font-mono">15</strong> Evaluation parameters</li>
@@ -176,7 +177,7 @@ const RecruiterMode: React.FC<RecruiterModeProps> = ({ onExit }) => {
               <div key={i} className="space-y-4">
                 <h3 className="text-lg font-bold text-white tracking-wider">{mission.title}</h3>
                 <p className="text-[12px] md:text-sm text-gray-400 font-sans leading-relaxed">{mission.subtitle}</p>
-                <p className="text-xs text-gray-400 font-sans tracking-widest text-blue-400">{mission.tech.join(' • ')}</p>
+                <p className="text-xs text-gray-400 font-sans tracking-widest text-blue-400">{mission.tech.join(' â€¢ ')}</p>
                 <div className="flex gap-4 pt-2 text-[10px] tracking-widest">
                   <a href={mission.links.project || '#'} target="_blank" rel="noreferrer" className="text-blue-400 hover:text-white transition-colors">[ VIEW PROJECT ]</a>
                   <a href={mission.links.github || '#'} target="_blank" rel="noreferrer" className="text-blue-400 hover:text-white transition-colors">[ GITHUB ]</a>

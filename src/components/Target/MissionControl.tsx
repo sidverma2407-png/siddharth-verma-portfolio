@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import TargetNode from './TargetNode';
 import MissionPanel from '../Panels/MissionPanel';
@@ -16,12 +16,12 @@ interface MissionControlProps {
 }
 
 const targets = [
-  { id: 'profile', label: 'TARGET 01 // PROFILE', x: 'clamp(160px, 20%, calc(100% - 160px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['WHO I AM', 'CSE @ VIT • AI / SOFTWARE / SYSTEMS', 'BUILDING PRODUCTS, NOT JUST PROJECTS'] },
-  { id: 'arsenal', label: 'TARGET 02 // ARSENAL', x: 'clamp(160px, 80%, calc(100% - 160px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['TECH STACK', 'PYTHON • C++ • JAVA • TYPESCRIPT', 'AI/ML • BACKEND • DISTRIBUTED SYSTEMS'] },
-  { id: 'missions', label: 'TARGET 03 // MISSIONS', x: 'clamp(160px, 25%, calc(100% - 160px))', y: 'clamp(120px, 55%, calc(100% - 160px))', lines: ['WHAT I BUILD', 'HELM • PHARMASSIST • SHOWRUSH', 'AI + BACKEND + REAL-WORLD SYSTEMS'] },
-  { id: 'experience', label: 'TARGET 04 // EXPERIENCE', x: 'clamp(160px, 75%, calc(100% - 160px))', y: 'clamp(120px, 55%, calc(100% - 160px))', lines: ['FIELD EXPERIENCE', 'AI/ML & SOFTWARE INTERN', '5-AGENT AI WORKFLOW • 70% FASTER RESEARCH'] },
-  { id: 'intel', label: 'TARGET 05 // INTEL', x: 'clamp(160px, 35%, calc(100% - 160px))', y: 'clamp(120px, 85%, calc(100% - 160px))', lines: ['EDUCATION + ACHIEVEMENTS', 'VIT • CGPA 8.28', 'LEADERSHIP • CERTIFICATIONS • PROJECTS'] },
-  { id: 'comms', label: 'TARGET 06 // COMMS', x: 'clamp(160px, 65%, calc(100% - 160px))', y: 'clamp(120px, 85%, calc(100% - 160px))', lines: ["LET'S BUILD", 'GITHUB • LINKEDIN • EMAIL', 'OPEN TO OPPORTUNITIES & COLLABORATION'] },
+  { id: 'profile', label: 'TARGET 01 // PROFILE', x: 'clamp(250px, 20%, calc(100% - 250px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['WHO I AM', 'CSE @ VIT â€¢ AI / SOFTWARE / SYSTEMS', 'BUILDING PRODUCTS, NOT JUST PROJECTS'] },
+  { id: 'arsenal', label: 'TARGET 02 // ARSENAL', x: 'clamp(250px, 80%, calc(100% - 250px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['TECH STACK', 'PYTHON â€¢ C++ â€¢ JAVA â€¢ TYPESCRIPT', 'AI/ML â€¢ BACKEND â€¢ DISTRIBUTED SYSTEMS'] },
+  { id: 'missions', label: 'TARGET 03 // MISSIONS', x: 'clamp(250px, 25%, calc(100% - 250px))', y: 'clamp(120px, 55%, calc(100% - 250px))', lines: ['WHAT I BUILD', 'HELM â€¢ PHARMASSIST â€¢ SHOWRUSH', 'AI + BACKEND + REAL-WORLD SYSTEMS'] },
+  { id: 'experience', label: 'TARGET 04 // EXPERIENCE', x: 'clamp(250px, 75%, calc(100% - 250px))', y: 'clamp(120px, 55%, calc(100% - 250px))', lines: ['FIELD EXPERIENCE', 'AI/ML & SOFTWARE INTERN', '5-AGENT AI WORKFLOW â€¢ 70% FASTER RESEARCH'] },
+  { id: 'intel', label: 'TARGET 05 // INTEL', x: 'clamp(250px, 35%, calc(100% - 250px))', y: 'clamp(120px, 85%, calc(100% - 250px))', lines: ['EDUCATION + ACHIEVEMENTS', 'VIT â€¢ CGPA 8.28', 'LEADERSHIP â€¢ CERTIFICATIONS â€¢ PROJECTS'] },
+  { id: 'comms', label: 'TARGET 06 // COMMS', x: 'clamp(250px, 65%, calc(100% - 250px))', y: 'clamp(120px, 85%, calc(100% - 250px))', lines: ["LET'S BUILD", 'GITHUB â€¢ LINKEDIN â€¢ EMAIL', 'OPEN TO OPPORTUNITIES & COLLABORATION'] },
 ];
 
 const MissionControl: React.FC<MissionControlProps> = ({ activePanel, setActivePanel, audioEnabled }) => {
@@ -116,7 +116,7 @@ const MissionControl: React.FC<MissionControlProps> = ({ activePanel, setActiveP
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 50 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="absolute top-0 right-0 w-full md:w-[600px] h-full bg-black/90 backdrop-blur-md border-l border-white/20 p-6 md:p-10 flex flex-col pointer-events-auto z-10"
+            className="absolute top-0 right-0 w-full md:w-[600px] h-full bg-[#03050A]/75 backdrop-blur-lg border-l border-white/10 shadow-[-20px_0_40px_rgba(0,0,0,0.5)] p-6 md:p-10 flex flex-col pointer-events-auto z-10"
           >
             <div className="flex justify-between items-center mb-6 border-b border-white/20 pb-4 shrink-0">
               <p className="text-xs tracking-widest text-green-500">INTEL UNLOCKED</p>

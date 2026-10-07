@@ -33,53 +33,53 @@ const CommandCore: React.FC = () => {
 
           {/* Orbital Arcs (Outer) */}
           <g transform="translate(500,500)">
-            <circle cx="0" cy="0" r="350" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
-            <path d="M 0 -350 A 350 350 0 0 1 350 0" fill="none" stroke="url(#orbitArc)" strokeWidth="1.5" opacity="0.3">
+            <circle cx="0" cy="0" r="350" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
+            <path d="M 0 -350 A 350 350 0 0 1 350 0" fill="none" stroke="url(#orbitArc)" strokeWidth="1.5" opacity="0.15">
               {!isReducedMotion && <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="40s" repeatCount="indefinite" />}
             </path>
             
-            <circle cx="0" cy="0" r="280" fill="none" stroke="rgba(52,152,219,0.1)" strokeWidth="0.5" />
-            <path d="M -280 0 A 280 280 0 0 1 0 280" fill="none" stroke="rgba(52,152,219,0.5)" strokeWidth="2" opacity="0.4">
+            <circle cx="0" cy="0" r="280" fill="none" stroke="rgba(52,152,219,0.05)" strokeWidth="0.5" />
+            <path d="M -280 0 A 280 280 0 0 1 0 280" fill="none" stroke="rgba(52,152,219,0.3)" strokeWidth="1.5" opacity="0.25">
               {!isReducedMotion && <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="25s" repeatCount="indefinite" />}
             </path>
             
-            <circle cx="0" cy="0" r="180" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1" strokeDasharray="4 8">
+            <circle cx="0" cy="0" r="180" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1" strokeDasharray="4 8">
               {!isReducedMotion && <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="60s" repeatCount="indefinite" />}
             </circle>
           </g>
 
           {/* Central Holographic Core */}
           <g transform="translate(500,500)">
-            <circle cx="0" cy="0" r="60" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-            <circle cx="0" cy="0" r="70" fill="none" stroke="rgba(46,204,113,0.3)" strokeWidth="1" strokeDasharray="15 5">
+            <circle cx="0" cy="0" r="60" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+            <circle cx="0" cy="0" r="70" fill="none" stroke="rgba(46,204,113,0.2)" strokeWidth="1" strokeDasharray="15 5">
               {!isReducedMotion && <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="15s" repeatCount="indefinite" />}
             </circle>
-            <circle cx="0" cy="0" r="80" fill="none" stroke="rgba(52,152,219,0.3)" strokeWidth="0.5" strokeDasharray="2 12">
+            <circle cx="0" cy="0" r="80" fill="none" stroke="rgba(52,152,219,0.15)" strokeWidth="0.5" strokeDasharray="2 12">
               {!isReducedMotion && <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="10s" repeatCount="indefinite" />}
             </circle>
             
             <circle cx="0" cy="0" r="3" fill="#fff" filter="url(#neonGlow)" />
-            <text x="0" y="-18" fill="rgba(255,255,255,0.9)" fontSize="14" fontFamily="monospace" textAnchor="middle" letterSpacing="3">SV</text>
-            <text x="0" y="5" fill="rgba(255,255,255,0.6)" fontSize="9" fontFamily="monospace" textAnchor="middle" letterSpacing="2">CORE</text>
+            <text x="0" y="-18" fill="rgba(255,255,255,0.8)" fontSize="14" fontFamily="monospace" textAnchor="middle" letterSpacing="3">SV</text>
+            <text x="0" y="5" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace" textAnchor="middle" letterSpacing="2">CORE</text>
             <text x="0" y="24" fill="#2ecc71" fontSize="8" fontFamily="monospace" textAnchor="middle" letterSpacing="3" filter="url(#neonGlow)" className="blink">ONLINE</text>
           </g>
 
           {/* Connection Lines */}
-          <g stroke="rgba(255,255,255,0.15)" strokeWidth="1" fill="none">
+          <g stroke="rgba(255,255,255,0.1)" strokeWidth="1" fill="none">
             <path id="core-to-ai" d="M 500 420 L 500 250" />
             <path id="core-to-app" d="M 420 500 L 250 500" />
             <path id="core-to-sys" d="M 580 500 L 750 500" />
             <path id="core-to-data" d="M 500 580 L 500 750" />
             
-            <path d="M 500 250 L 750 500" strokeDasharray="2 4" stroke="rgba(52,152,219,0.2)" />
-            <path d="M 750 500 L 500 750" strokeDasharray="2 4" stroke="rgba(52,152,219,0.2)" />
-            <path d="M 500 750 L 250 500" strokeDasharray="2 4" stroke="rgba(52,152,219,0.2)" />
-            <path d="M 250 500 L 500 250" strokeDasharray="2 4" stroke="rgba(52,152,219,0.2)" />
+            <path d="M 500 250 L 750 500" strokeDasharray="2 4" stroke="rgba(52,152,219,0.1)" />
+            <path d="M 750 500 L 500 750" strokeDasharray="2 4" stroke="rgba(52,152,219,0.1)" />
+            <path d="M 500 750 L 250 500" strokeDasharray="2 4" stroke="rgba(52,152,219,0.1)" />
+            <path d="M 250 500 L 500 250" strokeDasharray="2 4" stroke="rgba(52,152,219,0.1)" />
           </g>
 
           {/* Data Pulses */}
           {!isReducedMotion && (
-            <g fill="#fff" opacity="0.8" filter="url(#neonGlow)">
+            <g fill="#fff" opacity="0.5" filter="url(#neonGlow)">
               <circle r="2"><animateMotion dur="2s" repeatCount="indefinite" path="M 500 420 L 500 250" /></circle>
               <circle r="2"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 420 500 L 250 500" /></circle>
               <circle r="2"><animateMotion dur="2.2s" repeatCount="indefinite" path="M 580 500 L 750 500" /></circle>
