@@ -125,7 +125,7 @@ const RecruiterMode: React.FC<RecruiterModeProps> = ({ onExit }) => {
               <button onClick={() => scrollTo('contact')} className="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors">[ CONTACT ]</button>
             </div>
             
-            <p className="text-sm md:text-base leading-relaxed text-gray-400 max-w-2xl border-l-2 border-white/20 pl-4 py-1">
+            <p className="text-sm md:text-base leading-relaxed text-gray-400 max-w-2xl border-l-2 border-white/20 pl-4 py-1 font-sans">
               Computer Science & Engineering student at Vellore Institute of Technology focused on AI/ML, backend engineering and distributed systems.
             </p>
 
@@ -160,11 +160,11 @@ const RecruiterMode: React.FC<RecruiterModeProps> = ({ onExit }) => {
                   </div>
                   <p className="text-[10px] text-gray-500 tracking-widest">{exp.duration.toUpperCase()}</p>
                 </div>
-                <ul className="list-none space-y-4 text-xs md:text-sm text-gray-400 pl-4 border-l border-white/10 mt-4">
-                  <li><strong className="text-white">38% → 100%</strong> Keyword Coverage</li>
-                  <li><strong className="text-white">70%</strong> Reduction in manual research turnaround</li>
-                  <li><strong className="text-white">5-agent</strong> LangGraph workflow</li>
-                  <li><strong className="text-white">15</strong> Evaluation parameters</li>
+                <ul className="list-none space-y-4 text-xs md:text-sm text-gray-400 pl-4 border-l border-white/10 mt-4 font-sans leading-relaxed">
+                  <li><strong className="text-white font-mono">38% â†’ 100%</strong> Keyword Coverage</li>
+                  <li><strong className="text-white font-mono">70%</strong> Reduction in manual research turnaround</li>
+                  <li><strong className="text-white font-mono">5-agent</strong> LangGraph workflow</li>
+                  <li><strong className="text-white font-mono">15</strong> Evaluation parameters</li>
                 </ul>
               </div>
             ))}
@@ -175,8 +175,8 @@ const RecruiterMode: React.FC<RecruiterModeProps> = ({ onExit }) => {
             {missionsData.map((mission, i) => (
               <div key={i} className="space-y-4">
                 <h3 className="text-lg font-bold text-white tracking-wider">{mission.title}</h3>
-                <p className="text-[10px] text-gray-500 tracking-widest">{mission.subtitle}</p>
-                <p className="text-xs text-gray-400">{mission.tech.join(' • ')}</p>
+                <p className="text-[12px] md:text-sm text-gray-400 font-sans leading-relaxed">{mission.subtitle}</p>
+                <p className="text-xs text-gray-400 font-sans tracking-widest text-blue-400">{mission.tech.join(' • ')}</p>
                 <div className="flex gap-4 pt-2 text-[10px] tracking-widest">
                   <a href={mission.links.project || '#'} target="_blank" rel="noreferrer" className="text-blue-400 hover:text-white transition-colors">[ VIEW PROJECT ]</a>
                   <a href={mission.links.github || '#'} target="_blank" rel="noreferrer" className="text-blue-400 hover:text-white transition-colors">[ GITHUB ]</a>
@@ -189,24 +189,24 @@ const RecruiterMode: React.FC<RecruiterModeProps> = ({ onExit }) => {
             <h2 className="text-sm tracking-widest text-white border-b border-white/20 pb-2">SKILLS</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div>
-                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4">LANGUAGES</h3>
-                <p className="text-xs text-gray-300 leading-loose">{skillsData.languages.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
+                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4 font-mono">LANGUAGES</h3>
+                <p className="text-sm text-gray-300 leading-loose font-sans">{skillsData.languages.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
               </div>
               <div>
-                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4">AI / ML</h3>
-                <p className="text-xs text-gray-300 leading-loose">{skillsData.ai_ml.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
+                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4 font-mono">AI / ML</h3>
+                <p className="text-sm text-gray-300 leading-loose font-sans">{skillsData.ai_ml.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
               </div>
               <div>
-                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4">BACKEND / DISTRIBUTED</h3>
-                <p className="text-xs text-gray-300 leading-loose">{skillsData.backend.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
+                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4 font-mono">BACKEND / DISTRIBUTED</h3>
+                <p className="text-sm text-gray-300 leading-loose font-sans">{skillsData.backend.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
               </div>
               <div>
-                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4">DATABASES / CACHING</h3>
-                <p className="text-xs text-gray-300 leading-loose">{skillsData.databases.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
+                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4 font-mono">DATABASES / CACHING</h3>
+                <p className="text-sm text-gray-300 leading-loose font-sans">{skillsData.databases.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
               </div>
               <div>
-                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4">CLOUD / DEVOPS</h3>
-                <p className="text-xs text-gray-300 leading-loose">{skillsData.cloud_devops.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
+                <h3 className="text-[10px] text-gray-500 tracking-widest mb-4 font-mono">CLOUD / DEVOPS</h3>
+                <p className="text-sm text-gray-300 leading-loose font-sans">{skillsData.cloud_devops.join('\n').split('\n').map((l, idx) => <React.Fragment key={idx}>{l}<br/></React.Fragment>)}</p>
               </div>
             </div>
           </section>

@@ -47,7 +47,7 @@ function App() {
   const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   return (
-    <div className="relative w-full max-w-[100vw] h-screen bg-black overflow-hidden noselect cursor-none text-white font-mono">
+    <div className="relative w-full max-w-[100vw] h-screen bg-[#03050A] overflow-hidden noselect cursor-none text-white font-mono">
       <Environment />
       
       {/* Container that handles entry animation and shakes */}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Environment from './Environment/Environment';
 
 interface BootSequenceProps {
   status: 'booting' | 'ready' | 'deployed';
@@ -92,7 +93,8 @@ const BootSequence: React.FC<BootSequenceProps> = ({ onDeploy, onRecruiterMode }
   };
 
   return (
-    <div className="relative w-full h-screen bg-black text-gray-300 font-mono p-8 flex flex-col justify-center items-center overflow-hidden cursor-crosshair">
+    <div className="relative w-full h-screen bg-[#03050A] text-gray-300 font-mono p-8 flex flex-col justify-center items-center overflow-hidden cursor-crosshair">
+      <Environment />
       <div className="scanlines"></div>
       <div className="grain"></div>
 
@@ -104,8 +106,13 @@ const BootSequence: React.FC<BootSequenceProps> = ({ onDeploy, onRecruiterMode }
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, filter: 'blur(10px)' }}
             transition={{ duration: 0.3 }}
-            className="flex flex-col items-center max-w-lg w-full text-center"
+            className="flex flex-col items-center max-w-lg w-full text-center z-10"
           >
+            {/* Holographic orbital diagram behind text */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-blue-400/5 rounded-full pointer-events-none mix-blend-screen opacity-20 hidden md:block">
+              <div className="absolute inset-0 border border-white/5 rounded-full scale-75 border-dashed animate-[spin_60s_linear_infinite]"></div>
+            </div>
+
             <h1 className="text-xl md:text-3xl font-bold tracking-widest text-white mb-2">SIDDHARTH VERMA</h1>
             <p className="text-sm tracking-[0.2em] mb-1 font-bold text-gray-400">SOFTWARE ENGINEER</p>
             <p className="text-[10px] md:text-xs text-gray-500 tracking-[0.3em] mb-12">AI / SOFTWARE / DISTRIBUTED SYSTEMS</p>
@@ -124,7 +131,7 @@ const BootSequence: React.FC<BootSequenceProps> = ({ onDeploy, onRecruiterMode }
 
             <button 
               onClick={handleSkip}
-              className="mt-8 text-[10px] border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors"
+              className="mt-8 text-[10px] border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors bg-black/40 backdrop-blur-sm relative z-20"
             >
               [ SKIP INITIALIZATION ]
             </button>
@@ -148,14 +155,14 @@ const BootSequence: React.FC<BootSequenceProps> = ({ onDeploy, onRecruiterMode }
             <div className="flex flex-col items-center gap-6">
               <button 
                 onClick={handleDeployClick}
-                className="text-white border border-green-500/50 bg-green-500/10 px-8 py-3 tracking-widest hover:bg-green-500 hover:text-black transition-colors font-bold shadow-[0_0_15px_rgba(34,197,94,0.2)]"
+                className="text-white border border-green-500/50 bg-green-500/10 px-8 py-3 tracking-widest hover:bg-green-500 hover:text-black transition-colors font-bold shadow-[0_0_15px_rgba(34,197,94,0.2)] backdrop-blur-sm relative z-20"
               >
                 [ PRESS ENTER TO DEPLOY ]<span className="typing-cursor"></span>
               </button>
 
               <button 
                 onClick={(e) => { e.stopPropagation(); onRecruiterMode(); }}
-                className="text-[10px] text-gray-500 hover:text-white tracking-widest underline underline-offset-4 transition-colors"
+                className="text-[10px] text-gray-500 hover:text-white tracking-widest underline underline-offset-4 transition-colors relative z-20 bg-black/30 px-2 py-1"
               >
                 [ SKIP TO RECRUITER MODE ]
               </button>
@@ -168,7 +175,7 @@ const BootSequence: React.FC<BootSequenceProps> = ({ onDeploy, onRecruiterMode }
             key="deploying"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="absolute inset-0 flex flex-col items-center justify-center z-50 bg-black"
+            className="absolute inset-0 flex flex-col items-center justify-center z-50 bg-[#03050A]"
           >
             <p className="text-xs text-green-500 tracking-widest blink">&gt;&gt; DEPLOYING USER INTERFACE...</p>
             
