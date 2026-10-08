@@ -120,7 +120,7 @@ const RecruiterMode: React.FC<RecruiterModeProps> = ({ onExit }) => {
           
           <section id="about" className="scroll-mt-24 space-y-8">
             <div className="flex flex-wrap gap-4 text-xs font-bold tracking-widest">
-              <a href="/resume.pdf" target="_blank" rel="noreferrer" className="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors">[ DOWNLOAD RESUME ]</a>
+              <a href="https://drive.google.com/file/d/1CZK7uw4SqRT6-zBGuYeirH8rggePRc0L/view?usp=drive_link" target="_blank" rel="noreferrer" className="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors">[ DOWNLOAD RESUME ]</a>
               <a href={profileData.contact.github} target="_blank" rel="noreferrer" className="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors">[ GITHUB ]</a>
               <a href={profileData.contact.linkedin} target="_blank" rel="noreferrer" className="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors">[ LINKEDIN ]</a>
               <button onClick={() => scrollTo('contact')} className="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-colors">[ CONTACT ]</button>
