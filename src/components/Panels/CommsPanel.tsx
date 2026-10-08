@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 // Configuration variable for resume PDF
-const RESUME_URL = "https://drive.google.com/file/d/1CZK7uw4SqRT6-zBGuYeirH8rggePRc0L/view?usp=drive_link";
+const RESUME_URL = "/resume.pdf";
 
 interface CommsPanelProps {
   setActivePanel: (panel: string | null) => void;

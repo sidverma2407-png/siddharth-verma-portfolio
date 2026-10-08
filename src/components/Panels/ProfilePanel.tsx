@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { profileData } from '../../data/profile';
 
@@ -86,8 +86,8 @@ const ProfilePanel: React.FC = () => {
               <div>
                 <p className="text-xs text-gray-500 tracking-widest mb-1">INSTITUTION</p>
                 <p className="text-sm font-bold tracking-wide">VELLORE INSTITUTE OF TECHNOLOGY</p>
-                <p className="text-xs text-gray-300 mt-1">B.TECH — COMPUTER SCIENCE & ENGINEERING</p>
-                <p className="text-xs text-gray-500 mt-1">2023 — 2027</p>
+                <p className="text-xs text-gray-300 mt-1">B.TECH â€” COMPUTER SCIENCE & ENGINEERING</p>
+                <p className="text-xs text-gray-500 mt-1">2023 â€” 2027</p>
               </div>
               <div>
                 <p className="text-xs text-gray-500 tracking-widest mb-1">PERFORMANCE RATING</p>
@@ -127,7 +127,7 @@ const ProfilePanel: React.FC = () => {
         className="p-6 md:p-8 pt-0 mt-auto"
       >
         <div className="flex flex-col sm:flex-row gap-4">
-          <a href="#" className="flex-1 text-center border border-white/50 bg-white/10 py-3 text-sm tracking-widest hover:bg-white hover:text-black transition-colors font-bold">
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex-1 text-center border border-white/50 bg-white/10 py-3 text-sm tracking-widest hover:bg-white hover:text-black transition-colors font-bold">
             [ VIEW RESUME ]
           </a>
           <a href={profileData.contact.github} target="_blank" rel="noreferrer" className="flex-1 text-center border border-white/30 py-3 text-sm tracking-widest hover:bg-white hover:text-black transition-colors">
