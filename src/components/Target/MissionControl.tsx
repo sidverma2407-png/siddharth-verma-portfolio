@@ -16,7 +16,7 @@ interface MissionControlProps {
 }
 
 const targets = [
-  { id: 'profile', label: 'TARGET 01 // PROFILE', x: 'clamp(250px, 20%, calc(100% - 250px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['WHO I AM', 'CSE @ VIT â€¢ AI / SOFTWARE / SYSTEMS', 'BUILDING PRODUCTS, NOT JUST PROJECTS'] },
+  { id: 'profile', label: 'TARGET 01 // PROFILE', x: 'clamp(250px, 20%, calc(100% - 250px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['WHO I AM', 'CSE @ VIT // AI / SOFTWARE / SYSTEMS', 'BUILDING PRODUCTS, NOT JUST PROJECTS'] },
   { id: 'arsenal', label: 'TARGET 02 // ARSENAL', x: 'clamp(250px, 80%, calc(100% - 250px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['TECH STACK'] },
   { id: 'missions', label: 'TARGET 03 // MISSIONS', x: 'clamp(250px, 25%, calc(100% - 250px))', y: 'clamp(120px, 55%, calc(100% - 250px))', lines: ['WHAT I BUILD'] },
   { id: 'experience', label: 'TARGET 04 // EXPERIENCE', x: 'clamp(250px, 75%, calc(100% - 250px))', y: 'clamp(120px, 55%, calc(100% - 250px))', lines: ['FIELD EXPERIENCE'] },
@@ -144,3 +144,4 @@ const MissionControl: React.FC<MissionControlProps> = ({ activePanel, setActiveP
 };
 
 export default MissionControl;
+
