@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 const CommandCore: React.FC = () => {
   const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -59,9 +59,9 @@ const CommandCore: React.FC = () => {
             </circle>
             
             <circle cx="0" cy="0" r="3" fill="#fff" filter="url(#neonGlow)" />
-            <text x="0" y="-18" fill="rgba(255,255,255,0.8)" fontSize="14" fontFamily="monospace" textAnchor="middle" letterSpacing="3">SV</text>
-            <text x="0" y="5" fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="monospace" textAnchor="middle" letterSpacing="2">CORE</text>
-            <text x="0" y="24" fill="#2ecc71" fontSize="8" fontFamily="monospace" textAnchor="middle" letterSpacing="3" filter="url(#neonGlow)" className="blink">ONLINE</text>
+            <text x="0" y="-18" fill="rgba(255,255,255,0.8)" fontSize="16" fontFamily="monospace" textAnchor="middle" letterSpacing="3">SV</text>
+            <text x="0" y="5" fill="rgba(255,255,255,0.5)" fontSize="11" fontFamily="monospace" textAnchor="middle" letterSpacing="2">CORE</text>
+            <text x="0" y="24" fill="#2ecc71" fontSize="9" fontFamily="monospace" textAnchor="middle" letterSpacing="3" filter="url(#neonGlow)" className="blink">ONLINE</text>
           </g>
 
           {/* Connection Lines */}
@@ -93,7 +93,7 @@ const CommandCore: React.FC = () => {
           )}
 
           {/* Node Labels */}
-          <g fill="rgba(255,255,255,0.7)" fontFamily="monospace" fontSize="10" letterSpacing="3">
+          <g fill="rgba(255,255,255,0.7)" fontFamily="monospace" fontSize="12" letterSpacing="3">
             <g transform="translate(500,220)">
               <rect x="-40" y="-12" width="80" height="24" fill="rgba(3,5,10,0.8)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
               <text x="0" y="4" textAnchor="middle">AI CORE</text>

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import TargetNode from './TargetNode';
 import MissionPanel from '../Panels/MissionPanel';
@@ -16,7 +16,7 @@ interface MissionControlProps {
 }
 
 const targets = [
-  { id: 'profile', label: 'TARGET 01 // PROFILE', x: 'clamp(250px, 20%, calc(100% - 250px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['WHO I AM', 'CSE @ VIT • AI / SOFTWARE / SYSTEMS', 'BUILDING PRODUCTS, NOT JUST PROJECTS'] },
+  { id: 'profile', label: 'TARGET 01 // PROFILE', x: 'clamp(250px, 20%, calc(100% - 250px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['WHO I AM', 'CSE @ VIT â€¢ AI / SOFTWARE / SYSTEMS', 'BUILDING PRODUCTS, NOT JUST PROJECTS'] },
   { id: 'arsenal', label: 'TARGET 02 // ARSENAL', x: 'clamp(250px, 80%, calc(100% - 250px))', y: 'clamp(120px, 25%, calc(100% - 120px))', lines: ['TECH STACK'] },
   { id: 'missions', label: 'TARGET 03 // MISSIONS', x: 'clamp(250px, 25%, calc(100% - 250px))', y: 'clamp(120px, 55%, calc(100% - 250px))', lines: ['WHAT I BUILD'] },
   { id: 'experience', label: 'TARGET 04 // EXPERIENCE', x: 'clamp(250px, 75%, calc(100% - 250px))', y: 'clamp(120px, 55%, calc(100% - 250px))', lines: ['FIELD EXPERIENCE'] },
@@ -94,8 +94,8 @@ const MissionControl: React.FC<MissionControlProps> = ({ activePanel, setActiveP
             exit={{ opacity: 0 }}
             className="absolute bottom-16 left-1/2 -translate-x-1/2 pointer-events-none flex flex-col items-center text-center"
           >
-            <p className="text-xs text-gray-400 tracking-widest mt-1 uppercase">SHOOT A TARGET TO ACCESS INTEL</p>
-            <p className="text-[10px] text-gray-500 tracking-widest mt-1 bg-white/5 px-2 py-0.5 border border-white/10 uppercase">[ 6 TARGETS AVAILABLE ]</p>
+            <p className="text-sm text-gray-400 tracking-widest mt-1 uppercase">SHOOT A TARGET TO ACCESS INTEL</p>
+            <p className="text-[11px] text-gray-500 tracking-widest mt-1 bg-white/5 px-2 py-0.5 border border-white/10 uppercase">[ 6 TARGETS AVAILABLE ]</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -119,10 +119,10 @@ const MissionControl: React.FC<MissionControlProps> = ({ activePanel, setActiveP
             className="absolute top-0 right-0 w-full md:w-[600px] h-full bg-[#03050A]/75 backdrop-blur-lg border-l border-white/10 shadow-[-20px_0_40px_rgba(0,0,0,0.5)] p-6 md:p-10 flex flex-col pointer-events-auto z-10"
           >
             <div className="flex justify-between items-center mb-6 border-b border-white/20 pb-4 shrink-0">
-              <p className="text-xs tracking-widest text-green-500">INTEL UNLOCKED</p>
+              <p className="text-sm tracking-widest text-green-500">INTEL UNLOCKED</p>
               <button 
                 onClick={closePanel}
-                className="text-xs border border-white/30 px-3 py-1 hover:bg-white hover:text-black transition-colors"
+                className="text-sm border border-white/30 px-3 py-1 hover:bg-white hover:text-black transition-colors"
               >
                 [ ESC ] CLOSE FILE
               </button>

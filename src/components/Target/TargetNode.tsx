@@ -162,7 +162,7 @@ const TargetNode: React.FC<TargetNodeProps> = ({ id: _id, label, x, y, lines, on
                 exit={{ opacity: 0, y: 5 }}
                 className="bg-green-500/10 border border-green-500/30 px-2 py-1 backdrop-blur-sm text-center shadow-[0_0_10px_rgba(46,204,113,0.3)]"
               >
-                <p className="text-[10px] tracking-widest font-mono text-green-500 blink font-bold uppercase">
+                <p className="text-[11px] tracking-widest font-mono text-green-500 blink font-bold uppercase">
                   TARGET ACQUIRED
                 </p>
               </motion.div>
@@ -186,7 +186,7 @@ const TargetNode: React.FC<TargetNodeProps> = ({ id: _id, label, x, y, lines, on
           <div className={`w-1.5 h-1.5 rounded-full transition-colors ${isHovered || targetState !== 'IDLE' ? 'bg-red-500 animate-pulse' : 'bg-white/40'} ${targetState === 'UNLOCKED' ? 'bg-blue-400' : ''}`}></div>
           
           {/* Target ID Number */}
-          <div className="absolute top-1 left-1 text-[7px] font-mono text-white/30">
+          <div className="absolute top-1 left-1 text-[9px] font-mono text-white/30">
             {label.split('//')[0].trim().replace('TARGET ', 'T')}
           </div>
         </div>
@@ -209,16 +209,16 @@ const TargetNode: React.FC<TargetNodeProps> = ({ id: _id, label, x, y, lines, on
           animate={{ opacity: isHovered || targetState !== 'IDLE' ? 1 : 0.6 }}
         >
           {/* Target Title */}
-          <p className="text-[9px] md:text-[11px] tracking-widest font-mono text-white bg-black/50 px-3 py-1 border border-white/10 backdrop-blur-md shadow-lg whitespace-nowrap">
+          <p className="text-[10px] md:text-xs tracking-widest font-mono text-white bg-black/50 px-3 py-1 border border-white/10 backdrop-blur-md shadow-lg whitespace-nowrap">
             [{label}]
           </p>
 
           {/* Unlocking Sequence */}
           {targetState === 'UNLOCKING' && (
             <div className="flex flex-col mt-1 bg-black/80 px-3 py-2 border border-red-500/50 backdrop-blur-md shadow-[0_0_20px_rgba(204,41,41,0.2)] w-max">
-              {unlockStep >= 1 && <p className="text-[10px] text-red-500 font-mono tracking-widest">&gt;&gt; TARGET LOCKED</p>}
-              {unlockStep >= 2 && <p className="text-[10px] text-gray-400 font-mono tracking-widest">&gt;&gt; ACCESSING INTEL...</p>}
-              {unlockStep >= 3 && <p className="text-[10px] text-green-500 font-mono tracking-widest blink">&gt;&gt; INTEL UNLOCKED</p>}
+              {unlockStep >= 1 && <p className="text-[11px] text-red-500 font-mono tracking-widest">&gt;&gt; TARGET LOCKED</p>}
+              {unlockStep >= 2 && <p className="text-[11px] text-gray-400 font-mono tracking-widest">&gt;&gt; ACCESSING INTEL...</p>}
+              {unlockStep >= 3 && <p className="text-[11px] text-green-500 font-mono tracking-widest blink">&gt;&gt; INTEL UNLOCKED</p>}
             </div>
           )}
           
@@ -226,18 +226,18 @@ const TargetNode: React.FC<TargetNodeProps> = ({ id: _id, label, x, y, lines, on
           {targetState !== 'UNLOCKING' && (
             <div className="flex flex-col mt-1 bg-[#03050a]/80 px-2 md:px-4 py-2 border border-white/5 backdrop-blur-md shadow-lg w-max max-w-[85vw] md:max-w-[320px]">
               {lines.map((line, idx) => (
-                <p key={idx} className={`${idx === 0 ? 'text-[9px] font-mono tracking-widest text-blue-400 mb-1 uppercase font-bold' : 'text-xs font-sans tracking-wide text-gray-400 leading-relaxed'} text-center whitespace-normal`}>
+                <p key={idx} className={`${idx === 0 ? 'text-[11px] md:text-xs font-mono tracking-widest text-blue-400 mb-1 uppercase font-bold' : 'text-[13px] md:text-sm font-sans tracking-wide text-gray-400 leading-relaxed'} text-center whitespace-normal`}>
                   {line}
                 </p>
               ))}
               {targetState === 'UNLOCKED' && (
-                <p className="text-[9px] text-blue-400 mt-2 font-bold tracking-widest uppercase text-center border-t border-white/10 pt-2 font-mono">INTEL DECRYPTED</p>
+                <p className="text-[10px] text-blue-400 mt-2 font-bold tracking-widest uppercase text-center border-t border-white/10 pt-2 font-mono">INTEL DECRYPTED</p>
               )}
             </div>
           )}
 
           {isMobile && !isHovered && targetState === 'IDLE' && (
-             <p className="text-[9px] text-green-500 mt-1 blink font-mono tracking-widest">TAP TO ENGAGE</p>
+             <p className="text-[10px] text-green-500 mt-1 blink font-mono tracking-widest">TAP TO ENGAGE</p>
           )}
         </motion.div>
       )}

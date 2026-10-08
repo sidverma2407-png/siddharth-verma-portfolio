@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 interface TacticalHUDProps {
@@ -37,9 +37,9 @@ const TacticalHUD: React.FC<TacticalHUDProps> = ({ audioEnabled, setAudioEnabled
       {/* Top Bar */}
       <div className="flex justify-between items-start relative z-10">
         <div className="flex flex-col gap-1">
-          <p className="text-[9px] text-gray-500 tracking-[0.3em] mb-1">SV // COMMAND NETWORK</p>
+          <p className="text-[10px] text-gray-500 tracking-[0.3em] mb-1">SV // COMMAND NETWORK</p>
           <h2 className="text-xl md:text-2xl font-bold tracking-widest text-white">SIDDHARTH VERMA</h2>
-          <p className="text-[10px] md:text-xs text-green-500 tracking-[0.2em]">OPERATOR // SOFTWARE ENGINEER</p>
+          <p className="text-[11px] md:text-sm text-green-500 tracking-[0.2em]">OPERATOR // SOFTWARE ENGINEER</p>
           <div className="mt-2 w-32 h-[1px] bg-gradient-to-r from-green-500/80 to-transparent"></div>
         </div>
 
@@ -47,22 +47,22 @@ const TacticalHUD: React.FC<TacticalHUDProps> = ({ audioEnabled, setAudioEnabled
           <div className="pointer-events-auto mb-3 relative group flex flex-col items-end">
             <button 
               onClick={onRecruiterMode}
-              className="border border-green-500/30 bg-green-500/5 text-green-500 px-3 py-1.5 md:px-4 md:py-2 text-[9px] md:text-[10px] tracking-widest hover:bg-green-500 hover:text-black transition-colors"
+              className="border border-green-500/30 bg-green-500/5 text-green-500 px-3 py-1.5 md:px-4 md:py-2 text-[10px] md:text-xs tracking-widest hover:bg-green-500 hover:text-black transition-colors"
             >
               [ RECRUITER MODE ]
             </button>
             <div className="absolute top-full right-0 mt-1 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-              <span className="text-[8px] md:text-[9px] text-gray-500 tracking-widest">SKIP INTERACTIVE MODE</span>
+              <span className="text-[9px] md:text-[10px] text-gray-500 tracking-widest">SKIP INTERACTIVE MODE</span>
             </div>
           </div>
 
-          <p className="text-[9px] text-gray-500 tracking-[0.3em] mb-1">SYSTEM STATUS</p>
+          <p className="text-[10px] text-gray-500 tracking-[0.3em] mb-1">SYSTEM STATUS</p>
           <div className="flex items-center gap-2">
             <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(46,204,113,0.8)]"></div>
-            <p className="text-[10px] md:text-xs tracking-widest text-white">ONLINE</p>
+            <p className="text-[11px] md:text-sm tracking-widest text-white">ONLINE</p>
           </div>
           <p 
-            className="text-[9px] text-gray-500 font-mono tracking-widest pointer-events-auto cursor-pointer hover:text-white mt-1"
+            className="text-[10px] text-gray-500 font-mono tracking-widest pointer-events-auto cursor-pointer hover:text-white mt-1"
             onClick={handleClockClick}
           >
             SYS.T: {time}
@@ -79,13 +79,13 @@ const TacticalHUD: React.FC<TacticalHUDProps> = ({ audioEnabled, setAudioEnabled
       {/* Bottom Bar */}
       <div className="flex justify-between items-end w-full relative z-10">
         <div className="flex flex-col gap-1">
-          <p className="text-[9px] text-gray-500 tracking-[0.3em]">ORBITAL NODE // 07</p>
-          <p className="text-[9px] text-gray-500 tracking-[0.3em] mb-2">LATENCY // 0{latency}ms</p>
-          <p className="text-[10px] md:text-sm tracking-widest text-white/90">AI / SOFTWARE / DISTRIBUTED SYSTEMS</p>
+          <p className="text-[10px] text-gray-500 tracking-[0.3em]">ORBITAL NODE // 07</p>
+          <p className="text-[10px] text-gray-500 tracking-[0.3em] mb-2">LATENCY // 0{latency}ms</p>
+          <p className="text-[11px] md:text-base tracking-widest text-white/90">AI / SOFTWARE / DISTRIBUTED SYSTEMS</p>
           <div className="flex gap-4 mt-2 pointer-events-auto">
             <button 
               onClick={() => setAudioEnabled(!audioEnabled)}
-              className="text-[10px] flex items-center gap-2 text-gray-500 hover:text-white transition-colors tracking-widest"
+              className="text-[11px] flex items-center gap-2 text-gray-500 hover:text-white transition-colors tracking-widest"
             >
               {audioEnabled ? <Volume2 size={12} /> : <VolumeX size={12} />}
               AUDIO: {audioEnabled ? 'ON' : 'OFF'}
@@ -94,9 +94,9 @@ const TacticalHUD: React.FC<TacticalHUDProps> = ({ audioEnabled, setAudioEnabled
         </div>
 
         <div className="flex flex-col items-end gap-1">
-          <p className="text-[9px] text-gray-500 tracking-[0.3em]">SECURE CHANNEL</p>
+          <p className="text-[10px] text-gray-500 tracking-[0.3em]">SECURE CHANNEL</p>
           <div className="flex items-center gap-2">
-            <p className="text-[9px] text-blue-400 tracking-[0.3em]">ENCRYPTION // ACTIVE</p>
+            <p className="text-[10px] text-blue-400 tracking-[0.3em]">ENCRYPTION // ACTIVE</p>
           </div>
         </div>
       </div>
