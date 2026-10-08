@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 // Configuration variable for resume PDF
-const RESUME_URL = "#"; // Replace with actual path e.g. "/Siddharth_Verma_Resume.pdf"
+const RESUME_URL = "/resume.pdf";
 
 interface CommsPanelProps {
   setActivePanel: (panel: string | null) => void;
